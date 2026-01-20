@@ -37,20 +37,6 @@ Open your browser
 
 Go to http://127.0.0.1:5000/ to view the blog tracker.
 
-Project Structure
-blog-tracker/
-│
-├── app.py                  # Main Flask application
-├── post.py                 # Post class
-├── templates/
-│   ├── index.html          # Homepage template
-│   └── post.html           # Individual post template
-├── static/
-│   └── css/
-│       └── styles.css      # Custom CSS styles
-├── requirements.txt        # Python dependencies
-└── README.md
-
 Usage
 
 Homepage shows all blog posts.
