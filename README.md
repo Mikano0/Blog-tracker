@@ -1,6 +1,6 @@
 Blog Tracker
 
-A simple blog tracker web application built with Flask, Jinja2, and Python. This project displays blog posts fetched from an online JSON API and allows users to view each post individually.
+A simple blog tracker web application built with Flask, Jinja2, Bootstrap and Python. This project displays blog posts fetched from an online JSON API and allows users to view each post individually.
 
 Might scale this project up to add personal blogs and multiple pages to scroll through
 
