@@ -1,46 +1,43 @@
-Blog Tracker
+Flask Blog Project 📝
 
-A simple blog tracker web application built with Flask, Jinja2, Bootstrap and Python. This project displays blog posts fetched from an online JSON API and allows users to view each post individually.
-
-Might scale this project up to add personal blogs and multiple pages to scroll through
+A simple blog web app built with Flask that supports user registration/login, admin-only post management, and commenting with Gravatar profile images.
 
 Features
 
-Display a list of blog posts on the homepage.
+User registration + login (Flask-Login)
 
-View individual blog posts by clicking on them.
+Password hashing (Werkzeug)
 
-Responsive and clean UI using HTML and CSS.
+Admin-only permissions (admin = user with id 1)
 
-Easy to extend with new posts or features.
+Create / edit / delete blog posts (admin only)
+
+View all posts + single post page
+
+Comment system (logged-in users only)
+
+Rich text editor for posts and comments (Flask-CKEditor)
+
+Gravatar profile images generated with hashlib
+
+SQLite database using SQLAlchemy ORM
 
 Tech Stack
 
-Python – Backend logic
+Python
 
-Flask – Web framework for routing and rendering
+Flask
 
-Jinja2 – Templating engine for HTML pages
+Flask-Login
 
-HTML/CSS – Frontend design
+Flask-WTF
 
-Requests – Fetching blog posts from an external JSON API
+Flask-Bootstrap
 
-Installation
+Flask-CKEditor
 
-Clone the repository
+SQLAlchemy
 
-git clone <your-repo-url>
-cd <repo-folder>
+SQLite
 
-Open your browser
-
-Go to http://127.0.0.1:5000/ to view the blog tracker.
-
-Usage
-
-Homepage shows all blog posts.
-
-Click on a post to view the full content on a separate page.
-
-The app fetches posts from a JSON API, so updating the API will automatically update the posts.
+Werkzeug Security
