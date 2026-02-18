@@ -238,7 +238,7 @@ def contact():
         return render_template("contact.html", success=False)
     else:
         name = request.form["name"]
-        email = request.form["mail"]
+        email = request.form["email"]
         phone_number = request.form["phone"]
         message = request.form["message"]
         email_message = f"Subject:New Message\n\nName: {name}\nEmail: {email}\nPhone: {phone_number}\nMessage: {message}"
