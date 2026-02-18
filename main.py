@@ -15,14 +15,17 @@ import smtplib
 from dotenv import load_dotenv
 load_dotenv()
 
+
 email_user = os.environ.get("EMAIL_USER")
 email_pass = os.environ.get("EMAIL_PASS")
 to_mail = os.environ.get("MY_EMAIL")
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get("FLASK_KEY")
 ckeditor = CKEditor(app)
 Bootstrap5(app)
+
 
 def gravatar_url(email, size=100, rating="g", default='retro', force_default=False):
     email = email.strip().lower().encode("utf-8")
@@ -30,15 +33,16 @@ def gravatar_url(email, size=100, rating="g", default='retro', force_default=Fal
     return f"https://www.gravatar.com/avatar/{hash_}?s={size}&d={default}&r={rating}&f={force_default}"
 app.jinja_env.globals.update(gravatar_url=gravatar_url)
 
+
 login_manager = LoginManager()
 login_manager.init_app(app)
-
 @login_manager.user_loader
 def load_user(user_id):
     user = db.session.get(User, int(user_id))
     return user
 
-# CREATE DATABASE
+
+
 class Base(DeclarativeBase):
     pass
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -98,8 +102,13 @@ def admin_only(f):
     return decorated_func
 
 
+@app.route('/')
+def get_all_posts():
+    result = db.session.execute(db.select(BlogPost))
+    posts = result.scalars().all()
+    return render_template("index.html", all_posts=posts)
 
-# TODO: Use Werkzeug to hash the user's password when creating a new user.
+
 @app.route('/register', methods=["GET", "POST"])
 def register():
     form = RegisterForm()
@@ -122,7 +131,6 @@ def register():
     return render_template("register.html", form=form)
 
 
-# TODO: Retrieve a user from the database based on their email. 
 @app.route('/login', methods=["GET", "POST"])
 def login():
     form = Loginform()
@@ -151,14 +159,6 @@ def logout():
     return redirect(url_for('get_all_posts'))
 
 
-@app.route('/')
-def get_all_posts():
-    result = db.session.execute(db.select(BlogPost))
-    posts = result.scalars().all()
-    return render_template("index.html", all_posts=posts)
-
-
-# TODO: Allow logged-in users to comment on posts
 @app.route("/post/<int:post_id>", methods=["GET", "POST"])
 def show_post(post_id):
     form = CommentForm()
